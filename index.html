@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة الدخول</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bgCanvas"></canvas>
+
+    <div class="login-wrapper">
+        <div class="login-card">
+            <span class="crown-anim">👑</span>
+            <h2 style="color: white; margin-bottom: 10px;">RETAG</h2>
+            <p style="color: #aaa; margin-bottom: 25px;">مخصص لأجلك</p>
+            <div id="errorMsg"></div>
+            <input type="text" id="passInput" placeholder="دخلى عيد ميلادك" maxlength="5">
+            <button class="enter-btn" onclick="checkPass()">دخول</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
