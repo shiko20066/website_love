@@ -71,6 +71,7 @@ input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 10, 8
     margin-bottom: 40px; letter-spacing: 2px;
 }
 
+
 .special-msg-container { max-width: 700px; margin: 0 auto 50px; text-align: center; position: relative; }
 .msg-label {
     background: var(--primary); color: white; padding: 5px 20px; border-radius: 20px;
@@ -223,22 +224,30 @@ video { width: 100%; max-width: 600px; border-radius: 20px; border: 1px solid va
 .modal p { color: white; font-size: 1.6rem; margin-top: 20px; font-family: 'Amiri', serif; text-align: center; padding: 0 20px; text-shadow: 0 0 10px var(--primary); }
 .close-modal { position: absolute; top: 30px; right: 30px; font-size: 3rem; color: white; cursor: pointer; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-/* --- تعديلات الموبايل الصارمة (إضافية) --- */
+/* --- تعديلات الموبايل النهائية (صورة واحدة كاملة + حركة ناعمة) --- */
 @media (max-width: 767px) {
-    /* 1. ضبط العنوان لعدم الخروج عن الشاشة */
-    .jana-title {
-        font-size: 3.2rem !important; 
-        margin-bottom: 25px !important;
-        letter-spacing: 1px !important;
+    /* الحاوية: إلغاء المسافات الجانبية */
+    .slider-container {
+        padding: 0 !important;
+        width: 100% !important;
     }
 
-    /* 2. ضبط السلايدر: إظهار 85% من الكارت لرؤية طرف الكارت التالي (UX) */
+    /* التراك: تنظيم العرض والمرونة */
+    .slider-track {
+        gap: 0 !important; /* إلغاء الفراغ بين الصور */
+    }
+
+    /* الكارت: يأخذ الشاشة بالكامل */
     .memory-card {
-        min-width: 85% !important; 
-        height: 320px !important;
-        margin-left: 5px;
+        min-width: 100% !important; /* عرض كامل */
+        height: 400px !important;   /* ارتفاع ثابت ومناسب */
+        margin: 0 !important;       /* إلغاء الهوامش */
+        transform: scale(1) !important; /* إلغاء التصغير */
+        border-radius: 0 !important; /* (اختياري) حواف حادة لتملأ الشاشة */
+        border-left: none !important;
+        border-right: none !important;
     }
-
+}
     /* 3. ضبط شبكة التفضيلات: صورتين بجانب بعضهما بدلاً من صورة واحدة كبيرة */
     .fav-grid {
         gap: 12px !important;
@@ -259,5 +268,47 @@ video { width: 100%; max-width: 600px; border-radius: 20px; border: 1px solid va
     .poem-text {
         font-size: 1.8rem !important;
         padding: 0 15px;
+    }
+
+    /* --- تحسين شكل التفضيلات على الكمبيوتر (تصميم احترافي) --- */
+@media (min-width: 768px) {
+    .fav-grid {
+        display: flex !important;
+        justify-content: center !important; /* توسيط العناصر */
+        align-items: center !important;
+        gap: 40px !important; /* مسافة كبيرة بين الكروت */
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 50px 0 !important;
+    }
+
+    .fav-box {
+        width: 300px !important;  /* عرض ثابت مناسب */
+        height: 450px !important; /* ارتفاع طولي (شكل البوستر) */
+        flex: none !important;    /* منع التمدد العشوائي */
+        border-radius: 20px !important; /* حواف أكثر نعومة */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important; /* ظل قوي للعمق */
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+
+    /* تأثير هوفر للكمبيوتر فقط */
+    .fav-box:hover {
+        transform: translateY(-15px) scale(1.02) !important; /* يرتفع للأعلى قليلاً */
+        box-shadow: 0 20px 40px rgba(255, 10, 84, 0.4) !important; /* توهج بلون الثيم */
+        z-index: 10 !important;
+    }
+
+    /* تحسين الصور داخل البوكس */
+    .fav-box img {
+        height: 100% !important; /* ملء الطول */
+        width: 100% !important;
+        object-fit: cover !important; /* قص الصورة باحترافية */
+    }
+
+    /* تحسين النص */
+    .fav-label {
+        font-size: 1.4rem !important;
+        padding: 15px !important;
+        background: linear-gradient(transparent, #000 90%) !important; /* تدرج لوني للنص */
     }
 }
